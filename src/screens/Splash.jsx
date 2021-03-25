@@ -21,11 +21,13 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
+		
 	},
 	text: {
 		fontSize: 22,
 		fontWeight: 'bold',
 		color: '#000',
+
 	},
 });
 

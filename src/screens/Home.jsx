@@ -5,6 +5,7 @@ const HomePage = () => {
 	return (
 		<View style={styles.root}>
 			<Text style={styles.text}>AUTHENTICATED HOME PAGE</Text>
+
 		</View>
 	);
 };
@@ -14,6 +15,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
+	
 	},
 	text: {
 		fontSize: 22,
