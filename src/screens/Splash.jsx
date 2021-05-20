@@ -11,7 +11,7 @@ const SplashScreen = () => {
 
 	return (
 		<View style={styles.root}>
-			<Text style={styles.text}>HELLO WORLD!</Text>
+			<Text style={styles.text}>FiDAS</Text>
 		</View>
 	);
 };

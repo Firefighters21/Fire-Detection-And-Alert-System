@@ -2,22 +2,24 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/core';
 import { View, Text, StyleSheet, Button, TextInput, } from 'react-native';
 
-const LoginPage = () => {
+const signUp = () => {
 	const navigation = useNavigation();
 
 	return (
 		<View style={styles.root}>
-			<Text style={styles.text}>Sign in to your account</Text><br /><br />
+			<Text style={styles.text}>create your account</Text><br /><br />
 
 			<TextInput style={styles.input} placeholder = 'Username'/> <br />
 
-			 <TextInput style={styles.input}placeholder = 'password'/><br />
+			 <TextInput style={styles.input}placeholder = 'Email'/><br />
 
-			<Text style={styles.text} >Already An Existing User?</Text><br />
+             <TextInput style={styles.input}placeholder = 'Password'/><br />
 
-			<Button title="click here to sign up" /><br />
-			<Button title="forgot your password?" /><br />
+             <TextInput style={styles.input}placeholder = 'Phone Number'/><br />
 
+             <TextInput style={styles.input}placeholder = 'FiDAS ID'/><br />
+
+             
 			
 	
 			<Button title="Go to home page" onPress={() => navigation.navigate('auth')} />
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',	
 		
-		backgroundColor: '#FF6300'
+		backgroundColor: 'rgba(255, 255, 255, 0)'
 	},
 	
 	text: {
