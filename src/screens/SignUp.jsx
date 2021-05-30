@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/core';
-import { View, Text, StyleSheet, Button, TextInput, } from 'react-native';
+import { View, Text, StyleSheet, Button, option ,select ,TextInput, } from 'react-native';
 
-const signUp = () => {
+
+const SignUpPage = () => {
 	const navigation = useNavigation();
 
 	return (
@@ -19,10 +20,20 @@ const signUp = () => {
 
              <TextInput style={styles.input}placeholder = 'FiDAS ID'/><br />
 
-             
+			 <select  > 
+				  <option>Please enter your fire station</option>
+				 <option>KNUST FIRE STATION</option>
+				 <option>BOMSO FIRE STATION</option>
+			 </select><br />
+
+			 <Button title ="Register  " />
+
+			 <Text style={styles.text}>Already an exixting user ?</Text> <Button title = "click here" onPress={() => navigation.navigate('login')}/>
 			
-	
-			<Button title="Go to home page" onPress={() => navigation.navigate('auth')} />
+			 
+			 <br /><br />
+
+        
 		</View>
 
 		
@@ -37,7 +48,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',	
 		
-		backgroundColor: 'rgba(255, 255, 255, 0)'
+		backgroundColor: '#FF6300'
 	},
 	
 	text: {
@@ -59,4 +70,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default LoginPage;
+export default SignUpPage;

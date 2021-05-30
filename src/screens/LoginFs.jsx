@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/core';
 import { View, Text, StyleSheet, Button, TextInput, } from 'react-native';
 
 
-const LoginPage = () => {
+const LoginFs = () => {
 	const navigation = useNavigation();
 
 	return (
@@ -22,7 +22,7 @@ const LoginPage = () => {
 
 			<Button title="forgot your password?" /><br />
 
-			<Button title = "or sign in as Fire Station"  onPress={() => navigation.navigate('loginfs')}/> <br />
+			
 
 	
 	
@@ -63,4 +63,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default LoginPage;
+export default LoginFs;
