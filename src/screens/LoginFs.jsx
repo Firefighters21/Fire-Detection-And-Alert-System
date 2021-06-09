@@ -12,8 +12,7 @@ const LoginFs = () => {
 
 			<TextInput style={styles.input} placeholder = 'Username'/> <br />
 
-			 <TextInput style={styles.input} type= 'password'
-			 placeholder = 'password'/><br />
+			 <TextInput style={styles.input} placeholder = 'password'/><br />
 
 			     <Button title = "Sign in"/> <br />
 
@@ -52,10 +51,11 @@ const styles = StyleSheet.create({
 
 	input : {
 		borderWidth :1, 
-		width : 400,
+		width : 300,
 		height: 50,
 		textAlign : 'center',
-		fontSize: 20,
+		fontSize: 15,
+		borderRadius: 5,
 		backgroundColor: '#ffffff'
 		
 	

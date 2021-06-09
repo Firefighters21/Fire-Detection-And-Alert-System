@@ -59,10 +59,11 @@ const styles = StyleSheet.create({
 
 	input : {
 		borderWidth :1, 
-		width : 400,
+		width : 300,
 		height: 50,
 		textAlign : 'center',
-		fontSize: 20,
+		fontSize: 15,
+		borderRadius: 5,
 		backgroundColor: '#ffffff'
 		
 	
