@@ -1,10 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
+import { View, Text, Button, StyleSheet } from 'react-native';
 
 const HomePage = () => {
+	const navigation = useNavigation();
 	return (
 		<View style={styles.root}>
 			<Text style={styles.text}>AUTHENTICATED HOME PAGE</Text>
+			
+            <Button title="Sign in to your account" onPress={() => navigation.navigate('login')} /> 
 
 		</View>
 	);

@@ -4,25 +4,31 @@ import { View, Text, StyleSheet, Button } from 'react-native';
 import { TextInput } from 'react-native-paper';
 
 
-const LoginPage = () => {
+const SignUpPage = () => {
 	const navigation = useNavigation();
 
 	return (
 		<View style={styles.root}>
-			<Text style={styles.text}>SIGN IN TO YOUR ACCOUNT</Text>
+			<Text style={styles.text}>CREATE YOUR ACCOUNT</Text>
 
+			<TextInput style={styles.input}  label="Username" type="outline"/> 
 
-			<TextInput style={styles.input}  label="Email" type="outline"/> 
+            <TextInput style={styles.input}  label="Email" type="outline"/> 
 
-		    <TextInput style={styles.input} label="Password" 
-			 secureTextEntry 
+            <TextInput style={styles.input} 
+             secureTextEntry 
 			 right={<TextInput.Icon name="eye" />}
-			  type="outline"/>
+            label="Password" type="outline"/> 
 
-		
-            <Button title="Sign in as fire station" onPress={() => navigation.navigate('SignIn')} /> 
+            <TextInput style={styles.input}  label="Phone Number" type="outline"/> 
+
+            <TextInput style={styles.input}  label="FiDAS ID" type="outline"/> 
+
+			
+
+			<Button title="click here to sign in" onPress={() => navigation.navigate('login')}  />
+	
 			<Button title="Go to home page" onPress={() => navigation.navigate('auth')} />
-			<Button title="click here to sign up" onPress={() => navigation.navigate('SignUp')} />
 		</View>
 
 		
@@ -43,7 +49,7 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		color: '#000',
 		marginBottom:10,
-		borderRadius: 500
+		borderRadius: 5
 	},
 
 	input : {
@@ -57,4 +63,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default LoginPage;
+export default SignUpPage;
