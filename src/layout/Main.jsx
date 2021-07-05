@@ -3,7 +3,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from '../screens/Splash';
 import LoginPage from '../screens/Login';
-import SignUpPage  from '../screens/SignUp';
+import SignUpPage from '../screens/SignUp';
+import SignInPage from '../screens/SignIn';
 import AuthenticatedLayout from './AuthenticatedLayout';
 import LoginFs from '../screens/LoginFs';
 
@@ -23,7 +24,8 @@ const MainLayout = () => {
 				<Stack.Screen name="loginfs" component={LoginFs} />
 				<Stack.Screen name="signUp" component={SignUpPage} />
 				<Stack.Screen name="auth" component={AuthenticatedLayout} />
-			
+				<Stack.Screen name="SignUp" component={SignUpPage} />
+				<Stack.Screen name="SignIn" component={SignInPage} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
