@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/core';
 import { View, Text, StyleSheet, Button } from 'react-native';
-import { TextInput } from 'react-native-paper';
+import { TextInput, IconButton  } from 'react-native-paper';
 
 
 const SignInPage = () => {
@@ -9,14 +9,35 @@ const SignInPage = () => {
 
 	return (
 		<View style={styles.root}>
+
+            <IconButton
+				icon="arrow-left-circle"
+				onPress={() => {
+					if (navigation.canGoBack()) {
+						navigation.goBack();
+					}
+				}}
+				style={styles.backIcon}
+				size={40}
+			/>
+
 			<Text style={styles.text}>SIGN IN AS FIRE STATION</Text>
 
-            <TextInput style={styles.input}  label="Email" type="outline"/> 
+            <TextInput
+			 style={styles.input} 
+			  label="Email"
+			   type="outline"
+			   left = {<TextInput.Icon name ="email" />}
+			   /> 
 
             <TextInput style={styles.input} 
              secureTextEntry 
 			 right={<TextInput.Icon name="eye" />}
-            label="Password" type="outline"/> 
+            label="Password"
+			 type="outline"
+			 left = {<TextInput.Icon name ="lock" />}
+			 
+			 /> 
 
 
 			<Button title="click here to sign in as a user" onPress={() => navigation.navigate('login')}  />
@@ -45,11 +66,17 @@ const styles = StyleSheet.create({
 		borderRadius: 5
 	},
 
+	backIcon: {
+		position: 'absolute',
+		top: 10,
+		left: 5,
+	},
+
 	input : {
 		borderWidth :1, 
 		width : 300,
 		textAlign : 'center',
-		fontSize: 20,
+		fontSize: 22,
 		backgroundColor: '#ffffff',
 		marginBottom:10
 	}	

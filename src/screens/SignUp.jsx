@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/core';
 import { View, Text, StyleSheet, Button } from 'react-native';
-import { TextInput } from 'react-native-paper';
+import { TextInput, IconButton  } from 'react-native-paper';
 
 
 const SignUpPage = () => {
@@ -9,20 +9,54 @@ const SignUpPage = () => {
 
 	return (
 		<View style={styles.root}>
+
+            <IconButton
+				icon="arrow-left-circle"
+				onPress={() => {
+					if (navigation.canGoBack()) {
+						navigation.goBack();
+					}
+				}}
+				style={styles.backIcon}
+				size={40}
+			/>
 			<Text style={styles.text}>CREATE YOUR ACCOUNT</Text>
 
-			<TextInput style={styles.input}  label="Username" type="outline"/> 
+			<TextInput
+			 style={styles.input}
+			   label="Username"
+			    type="outline"
+				left={<TextInput.Icon name = "account"/>}
+				/> 
 
-            <TextInput style={styles.input}  label="Email" type="outline"/> 
+            <TextInput
+			 style={styles.input}
+			   label="Email"
+			    type="outline" 	
+			   left={<TextInput.Icon name = "email"/>}/> 
 
-            <TextInput style={styles.input} 
+            <TextInput
+			 style={styles.input} 
              secureTextEntry 
 			 right={<TextInput.Icon name="eye" />}
-            label="Password" type="outline"/> 
+            label="Password"
+			 type="outline"
+			 left={<TextInput.Icon name = "lock"/>}
+			 /> 
 
-            <TextInput style={styles.input}  label="Phone Number" type="outline"/> 
+            <TextInput 
+			style={styles.input}
+			  label="Phone Number"
+			   type="outline"
+			   left={<TextInput.Icon name = "phone"/>}
+			   /> 
 
-            <TextInput style={styles.input}  label="FiDAS ID" type="outline"/> 
+            <TextInput
+			 style={styles.input} 
+			  label="FiDAS ID"
+			   type="outline"
+			   left={<TextInput.Icon name = "firework"/>}
+			   /> 
 
 			
 
@@ -50,6 +84,12 @@ const styles = StyleSheet.create({
 		color: '#000',
 		marginBottom:10,
 		borderRadius: 5
+	},
+
+	backIcon: {
+		position: 'absolute',
+		top: 10,
+		left: 5,
 	},
 
 	input : {
