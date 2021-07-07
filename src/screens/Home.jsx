@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/core';
 import { View, Text, Button, StyleSheet } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 
 const HomePage = () => {
 	const navigation = useNavigation();

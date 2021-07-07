@@ -6,6 +6,8 @@ import LoginPage from '../screens/Login';
 import SignUpPage from '../screens/SignUp';
 import SignInPage from '../screens/SignIn';
 import AuthenticatedLayout from './AuthenticatedLayout';
+import LoggedPage from '../screens/logged';
+import ForgetpwdPage from '../screens/forgetPassword';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +25,8 @@ const MainLayout = () => {
 				<Stack.Screen name="auth" component={AuthenticatedLayout} />
 				<Stack.Screen name="SignUp" component={SignUpPage} />
 				<Stack.Screen name="SignIn" component={SignInPage} />
+				<Stack.Screen name="logged" component={LoggedPage} />
+				<Stack.Screen name="forgot-password" component={ForgetpwdPage} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

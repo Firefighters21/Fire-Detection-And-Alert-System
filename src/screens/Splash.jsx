@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native'
+import { StatusBar } from 'expo-status-bar';;
 
 const SplashScreen = () => {
 	const navigation = useNavigation();
@@ -11,6 +12,7 @@ const SplashScreen = () => {
 
 	return (
 		<View style={styles.root}>
+			 <StatusBar style="fade" />
 			<Text style={styles.text}>FiDAS</Text>
 		</View>
 	);

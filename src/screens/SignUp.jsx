@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/core';
 import { View, Text, StyleSheet, Button  } from 'react-native';
 import { TextInput,  IconButton  } from 'react-native-paper';
+import { StatusBar } from 'expo-status-bar';
 
 
 const SignUpPage = () => {
@@ -9,6 +10,7 @@ const SignUpPage = () => {
 
 	return (
 		<View style={styles.root}>
+			 <StatusBar style="fade" />
 
             <IconButton
 				icon="arrow-left-circle"

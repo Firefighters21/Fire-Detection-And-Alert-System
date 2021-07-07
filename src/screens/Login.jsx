@@ -1,14 +1,16 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/core';
 import { View, Text, StyleSheet,Image, Button} from 'react-native';
-import { TextInput, IconButton  } from 'react-native-paper';
+import { TextInput } from 'react-native-paper';
 import icon from '../../assets/icon.png';
+import { StatusBar } from 'expo-status-bar';
 
 const LoginPage = () => {
 	const navigation = useNavigation();
 
 	return (
 		<View style={styles.root}>
+			 <StatusBar style="fade" />
 
          <Image source={icon} style={styles.logo} />
 		
@@ -37,6 +39,8 @@ const LoginPage = () => {
 				style={styles.button}
 				icon="login"
 				color="white"
+				onPress={() => navigation.navigate('logged')}
+				
 				
 			
 			title=	"Login"
@@ -98,7 +102,7 @@ const styles = StyleSheet.create({
 
 	logo: {
 		position: 'absolute',
-		top: 30,
+		top: 40,
 		left: 110,
 		width: 200,
 		height: 200
