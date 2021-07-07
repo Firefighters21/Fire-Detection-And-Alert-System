@@ -38,11 +38,12 @@ const SignInPage = () => {
 			 left = {<TextInput.Icon name ="lock" />}
 			 
 			 /> 
+			
 
 
-			<Button title="click here to sign in as a user" onPress={() => navigation.navigate('login')}  />
+			<Button color="white" title="click here to sign in as a user" onPress={() => navigation.navigate('login')}  />
 	
-			<Button title="Go to home page" onPress={() => navigation.navigate('auth')} />
+			<Button  color="white" title="Go to home page" onPress={() => navigation.navigate('auth')} />
 		</View>
 
 		
@@ -56,13 +57,14 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',	
 		backgroundColor: '#FF6300',
+		marginBottom: -10
 	},
 	
 	text: {
 		fontSize: 22,
 		fontWeight: 'bold',
 		color: '#000',
-		marginBottom:10,
+		marginBottom:30,
 		borderRadius: 5
 	},
 
@@ -74,7 +76,7 @@ const styles = StyleSheet.create({
 
 	input : {
 		borderWidth :1, 
-		width : 300,
+		width : 350,
 		textAlign : 'center',
 		fontSize: 22,
 		backgroundColor: '#ffffff',

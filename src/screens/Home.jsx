@@ -8,7 +8,7 @@ const HomePage = () => {
 		<View style={styles.root}>
 			<Text style={styles.text}>AUTHENTICATED HOME PAGE</Text>
 			
-            <Button title="Sign in to your account" onPress={() => navigation.navigate('login')} /> 
+            <Button color="white" title="Sign in to your account" onPress={() => navigation.navigate('login')} /> 
 
 		</View>
 	);

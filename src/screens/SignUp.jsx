@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/core';
-import { View, Text, StyleSheet, Button } from 'react-native';
-import { TextInput, IconButton  } from 'react-native-paper';
+import { View, Text, StyleSheet, Button  } from 'react-native';
+import { TextInput,  IconButton  } from 'react-native-paper';
 
 
 const SignUpPage = () => {
@@ -56,13 +56,13 @@ const SignUpPage = () => {
 			  label="FiDAS ID"
 			   type="outline"
 			   left={<TextInput.Icon name = "firework"/>}
-			   /> 
+			   />
 
 			
 
-			<Button title="click here to sign in" onPress={() => navigation.navigate('login')}  />
+			<Button color="white" title="click here to sign in" onPress={() => navigation.navigate('login')}  />
 	
-			<Button title="Go to home page" onPress={() => navigation.navigate('auth')} />
+			<Button color="white" title="Go to home page" onPress={() => navigation.navigate('auth')} />
 		</View>
 
 		
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
 		fontSize: 22,
 		fontWeight: 'bold',
 		color: '#000',
-		marginBottom:10,
+		marginBottom: 30,
 		borderRadius: 5
 	},
 
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
 
 	input : {
 		borderWidth :1, 
-		width : 300,
+		width : 350,
 		textAlign : 'center',
 		fontSize: 20,
 		backgroundColor: '#ffffff',

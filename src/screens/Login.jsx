@@ -46,14 +46,14 @@ const LoginPage = () => {
 				uppercase={false}
 				style={styles.forgotPassword}
 				onPress={() => navigation.navigate('forgot-password')}
-			
+                color="white"
 				title = "Forgot your password?"
 			/>
 
 		
-            <Button title="Sign in as fire station" onPress={() => navigation.navigate('SignIn')} /> 
-			<Button title="Go to home page" onPress={() => navigation.navigate('auth')} />
-			<Button title="sign up" style={styles.forgotPassword} onPress={() => navigation.navigate('SignUp')} />
+            <Button  color="white" title="Sign in as fire station" onPress={() => navigation.navigate('SignIn')} /> 
+			<Button color="white" title="Go to home page"  onPress={() => navigation.navigate('auth')} />
+			<Button color="white" title="sign up" onPress={() => navigation.navigate('SignUp')} />
 		</View>
 
 		
@@ -67,6 +67,8 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',	
 		backgroundColor: '#FF6300',
+		marginBottom:-150
+		
 	},
 
 	top: {
@@ -96,10 +98,10 @@ const styles = StyleSheet.create({
 
 	logo: {
 		position: 'absolute',
-		top: 50,
-		right: 30,
-		width: 100,
-		height: 100
+		top: 30,
+		left: 110,
+		width: 200,
+		height: 200
 	},
 
 	input : {
