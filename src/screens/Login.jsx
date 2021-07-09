@@ -56,7 +56,6 @@ const LoginPage = () => {
 
 		
             <Button  color="white" title="Sign in as fire station" onPress={() => navigation.navigate('SignIn')} /> 
-			<Button color="white" title="Go to home page"  onPress={() => navigation.navigate('auth')} />
 			<Button color="white" title="sign up" onPress={() => navigation.navigate('SignUp')} />
 		</View>
 
@@ -71,7 +70,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',	
 		backgroundColor: '#FF6300',
-		marginBottom:-150
+		marginBottom:0
 		
 	},
 
@@ -104,8 +103,9 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 		top: 40,
 		left: 110,
-		width: 200,
-		height: 200
+		width: 150,
+		height: 150,
+		marginTop: -5,
 	},
 
 	input : {

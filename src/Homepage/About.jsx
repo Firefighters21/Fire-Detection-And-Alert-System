@@ -1,16 +1,16 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/core';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 
-const HomePage = () => {
-	const navigation = useNavigation();
+const About = () => {
+    const navigation = useNavigation();
 	
 	return (
 		<View style={styles.root}>
-			<Text style={styles.text}>AUTHENTICATED HOME PAGE</Text>
+			<Text style={styles.text}>about</Text>
 			
-            <Button color="white" title="Sign in to your account" onPress={() => navigation.navigate('login')} /> 
+         
 
 		</View>
 	);
@@ -31,4 +31,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default HomePage;
+export default About;

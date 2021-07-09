@@ -64,7 +64,6 @@ const SignUpPage = () => {
 
 			<Button color="white" title="click here to sign in" onPress={() => navigation.navigate('login')}  />
 	
-			<Button color="white" title="Go to home page" onPress={() => navigation.navigate('auth')} />
 		</View>
 
 		

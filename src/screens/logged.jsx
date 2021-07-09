@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/core';
-import { View , Image} from 'react-native';
+import { View , ImageBackground,StyleSheet} from 'react-native';
 import fire  from  '../../assets/fire.png';
 import { StatusBar } from 'expo-status-bar';
+
 
 
 
@@ -10,9 +11,14 @@ import { StatusBar } from 'expo-status-bar';
 const LoggedPage = () => {
 	const navigation = useNavigation();
 
+     
+
 	return (
-        <View>
-            <Image source={fire} />
+        <View style={styles.container} >
+        
+
+            <ImageBackground source={fire} style={styles.image} >
+      </ImageBackground>
             <StatusBar style="fade" />
             
         </View>
@@ -20,6 +26,19 @@ const LoggedPage = () => {
 		
 	);
 };
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      flexDirection: 'column',
+    },
+    image: {
+      flex: 1,
+      resizeMode: 'cover',
+      justifyContent: 'center',
+    }
+    
+  });
 
 
 

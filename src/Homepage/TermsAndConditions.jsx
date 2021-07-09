@@ -1,17 +1,17 @@
 import React from 'react';
+import { View,Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
-import { View, Text, Button, StyleSheet } from 'react-native';
 
 
-const HomePage = () => {
+
+
+const TermsPage = () => {
 	const navigation = useNavigation();
-	
+   
+
 	return (
 		<View style={styles.root}>
-			<Text style={styles.text}>AUTHENTICATED HOME PAGE</Text>
-			
-            <Button color="white" title="Sign in to your account" onPress={() => navigation.navigate('login')} /> 
-
+			<Text style={styles.text}>FiDAS</Text>
 		</View>
 	);
 };
@@ -22,13 +22,16 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		backgroundColor: '#FF6300',
-	
+		
 	},
 	text: {
 		fontSize: 22,
 		fontWeight: 'bold',
-		color: '#000',
+		color: '#fff',
+
 	},
 });
 
-export default HomePage;
+export default TermsPage;
+
+
