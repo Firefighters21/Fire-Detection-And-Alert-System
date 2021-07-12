@@ -62,8 +62,9 @@ const SignUpPage = () => {
 
 			
 
+			<Button color="white" title="Sign Up" onPress={() => navigation.navigate('')}  />
 			<Button color="white" title="click here to sign in" onPress={() => navigation.navigate('login')}  />
-	
+    
 		</View>
 
 		
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
 	input : {
 		borderWidth :1, 
 		width : 350,
-		textAlign : 'center',
+		textAlign : 'left',
 		fontSize: 20,
 		backgroundColor: '#ffffff',
 		marginBottom:10

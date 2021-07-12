@@ -23,7 +23,7 @@ const MainLayout = () => {
 				}}
 				initialRouteName="splash"
 			>
-				<Stack.Screen name="splash" component={SplashScreen} />
+				
 				<Stack.Screen name="login" component={LoginPage} />
 				<Stack.Screen name="logged" component={SideDraw}/>
 				<Stack.Screen name="SignUp" component={SignUpPage} />

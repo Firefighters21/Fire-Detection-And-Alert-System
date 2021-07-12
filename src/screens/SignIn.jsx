@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
 	input : {
 		borderWidth :1, 
 		width : 350,
-		textAlign : 'center',
+		textAlign : 'left',
 		fontSize: 22,
 		backgroundColor: '#ffffff',
 		marginBottom:10
