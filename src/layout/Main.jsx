@@ -5,8 +5,8 @@ import SplashScreen from '../screens/Splash';
 import LoginPage from '../screens/Login';
 import SignUpPage from '../screens/SignUp';
 import SignInPage from '../screens/SignIn';
-import AuthenticatedLayout from './AuthenticatedLayout';
-import LoginFs from '../screens/LoginFs';
+import ForgetpwdPage from '../screens/forgetPassword';
+import SideDraw from './SideDraw';
 
 const Stack = createStackNavigator();
 
@@ -19,13 +19,11 @@ const MainLayout = () => {
 				}}
 				initialRouteName="splash"
 			>
-				<Stack.Screen name="splash" component={SplashScreen} />
 				<Stack.Screen name="login" component={LoginPage} />
-				<Stack.Screen name="loginfs" component={LoginFs} />
-				<Stack.Screen name="signUp" component={SignUpPage} />
-				<Stack.Screen name="auth" component={AuthenticatedLayout} />
+				<Stack.Screen name="logged" component={SideDraw} />
 				<Stack.Screen name="SignUp" component={SignUpPage} />
 				<Stack.Screen name="SignIn" component={SignInPage} />
+				<Stack.Screen name="forgot-password" component={ForgetpwdPage} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

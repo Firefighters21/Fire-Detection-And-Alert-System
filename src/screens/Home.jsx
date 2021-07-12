@@ -4,9 +4,16 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 
 const HomePage = () => {
 	const navigation = useNavigation();
+
 	return (
 		<View style={styles.root}>
 			<Text style={styles.text}>AUTHENTICATED HOME PAGE</Text>
+
+			<Button
+				color="white"
+				title="Sign in to your account"
+				onPress={() => navigation.navigate('login')}
+			/>
 
 			<Button title="Sign in to your account" onPress={() => navigation.navigate('login')} />
 		</View>
