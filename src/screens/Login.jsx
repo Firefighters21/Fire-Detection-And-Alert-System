@@ -1,85 +1,68 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/core';
-import { View, Text, StyleSheet, Image, Button } from 'react-native';
-import { TextInput, Menu } from 'react-native-paper';
-import icon from '../../assets/icon.png';
+import { View, Text, StyleSheet } from 'react-native';
+import { TextInput, Button } from 'react-native-paper';
 import { StatusBar } from 'expo-status-bar';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const LoginPage = () => {
 	const navigation = useNavigation();
 
-	const [visible, setVisible] = React.useState(false);
-
-	const openMenu = () => setVisible(true);
-
-	const closeMenu = () => setVisible(false);
-
 	return (
 		<View style={styles.root}>
-			<StatusBar style="fade" />
-
-			{/* <Image source={icon} style={styles.logo} /> */}
-
-			<Text style={styles.text}>Sign into your account</Text>
-			<TextInput
-				style={styles.input}
-				label="Email"
-				type="outline"
-				left={<TextInput.Icon name="email" />}
-			/>
-
-			<TextInput
-				style={styles.input}
-				label="Password"
-				secureTextEntry
-				right={<TextInput.Icon name="eye" />}
-				type="outline"
-				left={<TextInput.Icon name="lock" />}
-			/>
-
-			<Menu
-				visible={visible}
-				onDismiss={closeMenu}
-				anchor={
-					<Button
-						onPress={openMenu}
-						color="white"
-						title="Please select your fire station"
-						style={styles.menu}
-					/>
-				}
+			<LinearGradient
+				colors={['#FFAB07', '#FF7A00', '#FF5C00']}
+				style={styles.gradient}
+				start={{ x: 0.0, y: 0.0 }}
+				end={{ x: 1.0, y: 1.0 }}
 			>
-				<Menu.Item onPress={() => {}} title="KNUST fire Station" />
-				<Menu.Item onPress={() => {}} title="Bomso fire Station " />
-			</Menu>
-
-			<Button
-				mode="contained"
-				style={styles.button}
-				icon="login"
-				color="white"
-				onPress={() => navigation.navigate('logged')}
-				title="Login"
-			/>
-
-			<Button
-				uppercase={false}
-				style={styles.forgotPassword}
-				onPress={() => navigation.navigate('forgot-password')}
-				color="white"
-				title="Forgot your password?"
-			/>
-			<Button
-				color="white"
-				title="Sign in as fire station"
-				onPress={() => navigation.navigate('SignIn')}
-			/>
-			<Button
-				color="white"
-				title="sign up"
-				onPress={() => navigation.navigate('SignUp')}
-				style={styles.signup}
-			/>
+				<StatusBar style="fade" />
+				<Text style={styles.text}>Sign into your account</Text>
+				<TextInput
+					style={styles.input}
+					label="Email"
+					type="outline"
+					left={<TextInput.Icon name="email" />}
+				/>
+				<TextInput
+					style={styles.input}
+					label="Password"
+					secureTextEntry
+					right={<TextInput.Icon name="eye" />}
+					type="outline"
+					left={<TextInput.Icon name="lock" />}
+				/>
+				<Button
+					mode="contained"
+					style={styles.button}
+					icon="login"
+					color="white"
+					onPress={() => navigation.navigate('logged')}
+				>
+					LOGIN
+				</Button>
+				<Button
+					uppercase={false}
+					style={styles.forgotPassword}
+					onPress={() => navigation.navigate('forgot-password')}
+					color="white"
+				>
+					Forgot Password?
+				</Button>
+				<Button
+					color="white"
+					title="Sign in as fire station"
+					onPress={() => navigation.navigate('SignIn')}
+				/>
+				<Button
+					color="white"
+					onPress={() => navigation.navigate('SignUp')}
+					style={styles.signup}
+					icon="arrow-right-thick"
+				>
+					<Text style={styles.signUpTxt}>Sign up</Text>
+				</Button>
+			</LinearGradient>
 		</View>
 	);
 };
@@ -87,51 +70,37 @@ const LoginPage = () => {
 const styles = StyleSheet.create({
 	root: {
 		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
-
-		backgroundColor: '#FF6300',
-		marginBottom: 0,
-		position: 'relative',
 	},
-
-	menu: {
+	gradient: {
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
-		color: 'white',
-		marginBottom: 0,
-		padding: 5,
+		backgroundColor: '#FF6300',
+		position: 'relative',
 	},
-
 	text: {
-		fontSize: 24,
+		fontSize: 32,
 		fontWeight: 'bold',
+		textTransform: 'uppercase',
+		textAlign: 'center',
 		letterSpacing: 1,
 		color: '#fff',
 		marginBottom: 40,
 		borderRadius: 500,
 	},
-
 	button: {
 		marginTop: 30,
-		width: '100%',
 		padding: 5,
+		width: 350,
 	},
-
+	signUpTxt: {
+		fontSize: 22,
+	},
 	forgotPassword: {
 		alignSelf: 'flex-end',
+		marginRight: 25,
+		marginTop: 10,
 	},
-
-	logo: {
-		position: 'absolute',
-		top: 40,
-		left: 110,
-		width: 150,
-		height: 150,
-		marginTop: -5,
-	},
-
 	input: {
 		borderWidth: 1,
 		width: 350,
@@ -141,11 +110,10 @@ const styles = StyleSheet.create({
 		backgroundColor: '#ffffff',
 		marginBottom: 10,
 	},
-
 	signup: {
 		position: 'absolute',
-		top: 0,
-		right: 0,
+		top: 60,
+		right: 20,
 	},
 });
 
