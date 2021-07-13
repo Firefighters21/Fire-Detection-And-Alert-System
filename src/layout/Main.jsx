@@ -6,6 +6,8 @@ import SignUpPage from '../screens/SignUp';
 import SignInPage from '../screens/SignIn';
 import ForgetpwdPage from '../screens/forgetPassword';
 import SideDraw from './SideDraw';
+import FsideDraw from './FsideDraw';
+
 
 const Stack = createStackNavigator();
 
@@ -19,6 +21,7 @@ const MainLayout = () => {
 				initialRouteName="splash"
 			>
 				<Stack.Screen name="login" component={LoginPage} />
+				<Stack.Screen name="fireStationLogged" component={FsideDraw} />
 				<Stack.Screen name="logged" component={SideDraw} />
 				<Stack.Screen name="SignUp" component={SignUpPage} />
 				<Stack.Screen name="SignIn" component={SignInPage} />

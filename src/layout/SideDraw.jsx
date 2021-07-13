@@ -1,6 +1,6 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { SafeAreaView, Image ,StyleSheet  } from 'react-native';
+import { SafeAreaView,StyleSheet  } from 'react-native';
 import LoggedPage from '../screens/logged';
 import About from '../Homepage/About';
 import TipsPage from '../Homepage/Tips';
@@ -9,7 +9,7 @@ import Logout from '../Homepage/logout';
 import WebPage from '../Homepage/fireServiceWebsite';
 import Feedback from '../Homepage/Feedback';
 import PrivacyAndPolicy from '../Homepage/PrivacyAndPolicy';
-import profile from '../../assets/profile.png';
+
 
 
 const SideDraw = () => {

@@ -1,19 +1,30 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/core';
-import { View, Text, StyleSheet, Button } from 'react-native';
-import { TextInput, IconButton  } from 'react-native-paper';
+import { View, Text, StyleSheet } from 'react-native';
+import { TextInput, IconButton , Button, Menu } from 'react-native-paper';
 import { StatusBar } from 'expo-status-bar';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 const SignInPage = () => {
 	const navigation = useNavigation();
+	const [visible, setVisible] = React.useState(false);
+	const openMenu = () => setVisible(true);
+	const closeMenu = () => setVisible(false);
 
 	return (
 		<View style={styles.root}>
+			<LinearGradient
+				colors={['#FFAB07', '#FF7A00', '#FF5C00']}
+				style={styles.gradient}
+				start={{ x: 0.0, y: 0.0 }}
+				end={{ x: 1.0, y: 1.0 }}
+			>
 
           <StatusBar style="fade" />
 
             <IconButton
+			color="white"
 				icon="arrow-left-circle"
 				onPress={() => {
 					if (navigation.canGoBack()) {
@@ -24,7 +35,7 @@ const SignInPage = () => {
 				size={40}
 			/>
 
-			<Text style={styles.text}>SIGN IN AS FIRE STATION</Text>
+			<Text style={styles.text}>Sign in as fire station</Text>
 
             <TextInput
 			 style={styles.input} 
@@ -41,12 +52,34 @@ const SignInPage = () => {
 			 left = {<TextInput.Icon name ="lock" />}
 			 
 			 /> 
-			
 
+		<Menu
+          visible={visible}
+          onDismiss={closeMenu}
+          anchor={
+		  <Button 
+			     color= "white"
+			  	 mode="contained" 
+				   onPress={openMenu}>Please select your fire station
+				   </Button>
+				   }
+		  >
+          <Menu.Item onPress={() => {}} title="KNUST Fire Station" />
+          <Menu.Item onPress={() => {}} title="Bomso Fire Station" />
+        </Menu>
 
-			<Button color="white" title="click here to sign in as a user" onPress={() => navigation.navigate('login')}  />
+			 <Button
+					mode="contained"
+					style={styles.button}
+					icon="login"
+					color="white"
+					onPress={() => navigation.navigate('fireStationLogged')}
+				>
+					LOGIN
+				</Button>
 	
-			<Button  color="white" title="Go to home page" onPress={() => navigation.navigate('auth')} />
+		
+			</LinearGradient>
 		</View>
 
 		
@@ -57,18 +90,30 @@ const SignInPage = () => {
 const styles = StyleSheet.create({
 	root: {
 		flex: 1,
+		
+	},
+	gradient: {
+		flex: 1,
 		alignItems: 'center',
-		justifyContent: 'center',	
+		justifyContent: 'center',
 		backgroundColor: '#FF6300',
-		marginBottom: -10
+		position: 'relative',
+	},
+	button: {
+		marginTop: 30,
+		padding: 5,
+		width: 350,
 	},
 	
 	text: {
-		fontSize: 22,
+		fontSize: 32,
 		fontWeight: 'bold',
-		color: '#000',
-		marginBottom:30,
-		borderRadius: 5
+		textTransform: 'uppercase',
+		textAlign: 'center',
+		letterSpacing: 1,
+		color: '#fff',
+		marginBottom: 40,
+		borderRadius: 500,
 	},
 
 	backIcon: {

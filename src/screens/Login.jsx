@@ -49,11 +49,16 @@ const LoginPage = () => {
 				>
 					Forgot Password?
 				</Button>
+
 				<Button
+		     		uppercase={false}
 					color="white"
-					title="Sign in as fire station"
+					style={styles.SigninAsFireStation}
 					onPress={() => navigation.navigate('SignIn')}
-				/>
+				>
+					or Sign in as fire station ?
+				</Button>	
+
 				<Button
 					color="white"
 					onPress={() => navigation.navigate('SignUp')}
@@ -100,6 +105,11 @@ const styles = StyleSheet.create({
 		alignSelf: 'flex-end',
 		marginRight: 25,
 		marginTop: 10,
+	},
+	SigninAsFireStation: {
+		alignSelf: 'flex-end',
+		marginRight: 25,
+		marginTop: 50,
 	},
 	input: {
 		borderWidth: 1,
