@@ -1,9 +1,10 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/core';
 import { StatusBar } from 'expo-status-bar';
-import { View, Text, StyleSheet,Image, Button} from 'react-native';
-import { IconButton, TextInput } from 'react-native-paper';
+import { View, Text, StyleSheet,Image} from 'react-native';
+import { IconButton, TextInput, Button} from 'react-native-paper';
 import icon from '../../assets/icon.png';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 
@@ -12,7 +13,14 @@ const ForgetpwdPage = () => {
 
 	return (
         <View  style={styles.root}>
-            <IconButton
+			<LinearGradient
+				colors={['#FFAB07', '#FF7A00', '#FF5C00']}
+				style={styles.gradient}
+				start={{ x: 0.0, y: 0.0 }}
+				end={{ x: 1.0, y: 1.0 }}
+			>
+            <IconButton 						
+			    color ="white"
 				icon="arrow-left-circle"
 				onPress={() => {
 					if (navigation.canGoBack()) {
@@ -32,17 +40,18 @@ const ForgetpwdPage = () => {
 				style={styles.input}
 				left={<TextInput.Icon name="email" />}
 			/>
+
 			<Button
 				mode="contained"
 				style={styles.button}
-				icon={() => <Icon name="lock-open" size={25} />}
-				color="white"
-			
-			  title ="Request Password reset code"	
-			/>
-            
+				onPress={() => navigation.navigate('')}
+				color="white" 	
+			>
+				Request Password reset code
+			</Button>
+             
             <StatusBar style="fade" />
-            
+			</LinearGradient>     
         </View>
 		
 		
@@ -52,18 +61,20 @@ const ForgetpwdPage = () => {
 const styles = StyleSheet.create({
 	root: {
 		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',	
-		backgroundColor: '#FF6300',
-		marginBottom:-160
-		
+		marginBottom: -50,
 	},
 
 	top: {
-		height : 20,
+		height : 10,
 		position: 'absolute',
+	},
 
-
+	gradient: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center',
+		backgroundColor: '#FF6300',
+		position: 'relative',
 	},
     
 	backIcon: {
@@ -82,7 +93,7 @@ const styles = StyleSheet.create({
 
 	button: {
 		marginTop: 30,
-		width: '100%',
+		width: '90%',
 		padding: 5,
 	},
 
@@ -92,16 +103,22 @@ const styles = StyleSheet.create({
 
     title: {
 		fontSize: 25,
+		fontWeight: 'bold',
+		textTransform: 'uppercase',
 		textAlign: 'center',
-		marginBottom: 20,
-		fontWeight: 'bold'
-    },
+		letterSpacing: 1,
+		color: '#fff',
+		marginBottom: 10,
+		borderRadius: 500,
+	
+	},
 
 	logo: {
 		position: 'absolute',
-		top: 100,
+		top: 30,
 		left: 110,
 		width: 200,
+		marginTop: 40,
 		height: 200
 	},
 
