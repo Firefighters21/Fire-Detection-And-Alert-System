@@ -90,20 +90,11 @@ const SignUpPage = () => {
 			color ="white" 
 			uppercase ={false}
 			style={styles.button}
-			 onPress={() => navigation.navigate('SignUP')} 
+			 onPress={() => navigation.navigate('login')} 
 			>
 			 SIGN UP	
 			</Button>
 
-			
-
-			<Button
-				color="white"
-				title="click here to sign in"
-				onPress={() => navigation.navigate('login')}
-			/>
-
-			
 			<Button
 					color="white"
 					onPress={() => navigation.navigate('login')}

@@ -16,7 +16,7 @@ const FsideDraw = () => {
 		<SafeAreaView style={{ flex: 1 }}>
 
 
-		 <Drawer.Navigator >
+		 <Drawer.Navigator  >
          <Drawer.Screen  name="fireStationLogged" component={FireStationLogged} />
          <Drawer.Screen  name="Messages" component={Messages} />
          <Drawer.Screen  name="Support" component={Support} />

@@ -7,7 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 const LoginPage = () => {
 	const navigation = useNavigation();
-
+	
 	return (
 		<View style={styles.root}>
 			<LinearGradient
