@@ -1,14 +1,16 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { SafeAreaView, StyleSheet  } from 'react-native';
+import { Button, SafeAreaView, StyleSheet  } from 'react-native';
 import FireStationLogged from '../screens/FireStationLogged';
 import Messages from '../FireStationHome/Messages';
 import Support from '../FireStationHome/Support';
-import Logout from '../FireStationHome/Logout';
 import About from '../FireStationHome/About';
+import { useNavigation } from '@react-navigation/core';
+
 
 const FsideDraw = () => {
 	const Drawer = createDrawerNavigator();
+  const navigation = useNavigation();
 
 	return (
 		<SafeAreaView style={{ flex: 1 }}>
@@ -19,9 +21,11 @@ const FsideDraw = () => {
          <Drawer.Screen  name="Messages" component={Messages} />
          <Drawer.Screen  name="Support" component={Support} />
          <Drawer.Screen  name="About" component={About} />
-         <Drawer.Screen  name="Logout" component={Logout} />
        
       </Drawer.Navigator>
+
+      <Button title= "log out" onPress={() => navigation.navigate('login')}/>
+     
 
 </SafeAreaView>
 		

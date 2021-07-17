@@ -1,19 +1,22 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { SafeAreaView,StyleSheet  } from 'react-native';
+import { SafeAreaView,StyleSheet,Button ,TouchableOpacity, Text} from 'react-native';
 import LoggedPage from '../screens/logged';
 import About from '../Homepage/About';
 import TipsPage from '../Homepage/Tips';
 import TermsPage from '../Homepage/TermsAndConditions';
-import Logout from '../Homepage/logout';
 import WebPage from '../Homepage/fireServiceWebsite';
 import Feedback from '../Homepage/Feedback';
 import PrivacyAndPolicy from '../Homepage/PrivacyAndPolicy';
-
+import { useNavigation } from '@react-navigation/core';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 
 const SideDraw = () => {
 	const Drawer = createDrawerNavigator();
+  const navigation = useNavigation();
+  
 
 	return (
 		<SafeAreaView style={{ flex: 1 }}>
@@ -27,8 +30,12 @@ const SideDraw = () => {
         <Drawer.Screen name="Privacy and Policy" component={PrivacyAndPolicy} />
         <Drawer.Screen name="About" component={About} />
         <Drawer.Screen name="Feedback" component={Feedback} />
-        <Drawer.Screen name="logout" component={Logout} />
       </Drawer.Navigator>
+
+       
+    
+
+      <Button title= "log out" onPress= {()=> navigation.navigate('login')} />
 
 </SafeAreaView>
 		

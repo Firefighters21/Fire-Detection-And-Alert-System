@@ -95,7 +95,8 @@ const SignUpPage = () => {
 			 SIGN UP	
 			</Button>
 
-			<Button color="white" title="Sign Up" onPress={() => navigation.navigate('')} />
+			
+
 			<Button
 				color="white"
 				title="click here to sign in"
@@ -119,6 +120,7 @@ const SignUpPage = () => {
 const styles = StyleSheet.create({
 	root: {
 		flex: 1,
+		marginTop: 20,
 	
 	},
 	gradient: {
@@ -130,7 +132,7 @@ const styles = StyleSheet.create({
 	},
 
 	button: {
-		marginTop: 10,
+		marginTop: 60,
 		padding: 5,
 		width: 350,
 	},
@@ -140,7 +142,7 @@ const styles = StyleSheet.create({
 	},
 	signup: {
 		position: 'absolute',
-		top: 40,
+		top: 20,
 		right: 20,
 	},
 	text: {
@@ -148,6 +150,7 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		color: '#000',
 		marginBottom: 30,
+		color: 'white',
 		borderRadius: 5,
 	},
 
