@@ -3,10 +3,41 @@ import { useNavigation } from '@react-navigation/core';
 import { View, Text, StyleSheet } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import { StatusBar } from 'expo-status-bar';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import { LinearGradient } from 'expo-linear-gradient';
+import firebase from 'firebase/app';
+import { firebaseConfig } from '../firebase/firebase';
+// import "firebase/auth";
 
 const LoginPage = () => {
 	const navigation = useNavigation();
+	
+	const { values, errors, handleBlur, handleChange, handleSubmit } = useFormik({
+		initialValues: {
+			email: '',
+			password: '',
+		},
+		onSubmit: (values) => {
+			firebase.auth().signInWithEmailAndPassword(values.email, values.password)
+		.then((userCredential) => {
+		  // Signed in
+		  return navigation.navigate('logged')
+		})
+		.catch((error) => {
+		  let errorMessage = '';
+		  var errorCode = error.code;
+		  if(errorCode === "auth/invalid-email") errorMessage = "Please enter your email."
+		  else errorMessage=error.message;
+		  alert(errorMessage)
+		  console.log('error --- ',{errorCode,errorMessage})
+		});
+		},
+		validationSchema: Yup.object({
+			email: Yup.string().email().required(),
+			password: Yup.string().min(8).max(32).required(),
+		}),
+	});
 	
 	return (
 		<View style={styles.root}>
@@ -23,21 +54,31 @@ const LoginPage = () => {
 					label="Email"
 					type="outline"
 					left={<TextInput.Icon name="email" />}
+					value={values.email}
+				    error={!!errors.email}
+				    onChangeText={handleChange('email')}
+					// onChangeText={(theEmail) => setEmail(theEmail)}
 				/>
+				<Text style={styles.error}>{errors.email}</Text>
 				<TextInput
 					style={styles.input}
 					label="Password"
 					secureTextEntry
-					right={<TextInput.Icon name="eye" />}
+					right={<TextInput.Icon name="eye"  />}
 					type="outline"
-					left={<TextInput.Icon name="lock" />}
+					left={<TextInput.Icon name="lock"  />}
+					value={values.password}
+				    error={!!errors.password}
+				    onChangeText={handleChange('password')}
+					// onChangeText={(thePass) => setPassword(thePass)}
 				/>
+				<Text style={styles.error}>{errors.password}</Text>
 				<Button
 					mode="contained"
 					style={styles.button}
 					icon="login"
 					color="white"
-					onPress={() => navigation.navigate('logged')}
+					onPress={handleSubmit}
 				>
 					LOGIN
 				</Button>
@@ -100,6 +141,10 @@ const styles = StyleSheet.create({
 	},
 	signUpTxt: {
 		fontSize: 22,
+	},
+	 error: {
+		 color:'blue',
+		fontSize: 18,
 	},
 	forgotPassword: {
 		alignSelf: 'flex-end',

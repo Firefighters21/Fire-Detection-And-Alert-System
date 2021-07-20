@@ -3,15 +3,43 @@ import { useNavigation } from '@react-navigation/core';
 import { View, Text, StyleSheet } from 'react-native';
 import { TextInput, IconButton , Button, Menu } from 'react-native-paper';
 import { StatusBar } from 'expo-status-bar';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import { LinearGradient } from 'expo-linear-gradient';
+import firebase from 'firebase';
+import { firebaseConfig } from '../firebase/firebase';
 
 
 const SignInPage = () => {
 	const navigation = useNavigation();
-	const [visible, setVisible] = React.useState(false);
 	const openMenu = () => setVisible(true);
 	const closeMenu = () => setVisible(false);
-
+	const [visible, setVisible] = React.useState(false);
+	const { values, errors, handleBlur, handleChange, handleSubmit } = useFormik({
+		initialValues: {
+			email: '',
+			password: '',
+		},
+		onSubmit: (values) => {
+			firebase.auth().signInWithEmailAndPassword(values.email, values.password)
+			.then((userCredential) => {
+				// Signed in
+				return navigation.navigate('fireStationLogged')
+			  })
+		.catch((error) => {
+		  let errorMessage = '';
+		  var errorCode = error.code;
+		  if(errorCode === "auth/invalid-email") errorMessage = "Please enter your email."
+		  else errorMessage=error.message;
+		  alert(errorMessage )
+		  console.log('error --- ',{errorCode,errorMessage})
+		});
+		},
+		validationSchema: Yup.object({
+			email: Yup.string().email().required(),
+			password: Yup.string().min(8).max(32).required(),
+		}),
+	});
 	return (
 		<View style={styles.root}>
 			<LinearGradient
@@ -39,41 +67,36 @@ const SignInPage = () => {
 
             <TextInput
 			 style={styles.input} 
-			  label="Email"
-			   type="outline"
-			   left = {<TextInput.Icon name ="email" />}
+			 label="Email"
+					type="outline"
+					left={<TextInput.Icon name="email" />}
+					value={values.email}
+				    error={!!errors.email}
+				    onChangeText={handleChange('email')}
+					// onChangeText={(theEmail) => setEmail(theEmail)}
 			   /> 
+			   <Text style={styles.error}>{errors.email}</Text>
 
-            <TextInput style={styles.input} 
-             secureTextEntry 
-			 right={<TextInput.Icon name="eye" />}
-            label="Password"
-			 type="outline"
-			 left = {<TextInput.Icon name ="lock" />}
-			 
+            <TextInput
+			 style={styles.input} 
+             label="Password"
+					secureTextEntry
+					right={<TextInput.Icon name="eye"  />}
+					type="outline"
+					left={<TextInput.Icon name="lock"  />}
+					value={values.password}
+				    error={!!errors.password}
+				    onChangeText={handleChange('password')}
+					// onChangeText={(thePass) => setPassword(thePass)}
 			 /> 
-
-		<Menu
-          visible={visible}
-          onDismiss={closeMenu}
-          anchor={
-		  <Button 
-			     color= "white"
-			  	 mode="contained" 
-				   onPress={openMenu}>Please select your fire station
-				   </Button>
-				   }
-		  >
-          <Menu.Item onPress={() => {}} title="KNUST Fire Station" />
-          <Menu.Item onPress={() => {}} title="Bomso Fire Station" />
-        </Menu>
+			 <Text style={styles.error}>{errors.password}</Text>
 
 			 <Button
 					mode="contained"
 					style={styles.button}
 					icon="login"
 					color="white"
-					onPress={() => navigation.navigate('fireStationLogged')}
+					onPress={handleSubmit}
 				>
 					LOGIN
 				</Button>
@@ -98,6 +121,10 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		backgroundColor: '#FF6300',
 		position: 'relative',
+	},
+	error: {
+		color:'blue',
+	   fontSize: 18,
 	},
 	button: {
 		marginTop: 30,

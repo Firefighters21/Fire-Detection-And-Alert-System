@@ -1,6 +1,8 @@
 import * as firebase from 'firebase';
+import "firebase/firestore";
+import 'firebase/auth';
 
-const firebaseConfig = {
+export const firebaseConfig = {
     apiKey: "AIzaSyARufLd_kXVwGn9SfhjLIXsL0R0wY6zH3E",
 	authDomain: "fidas-99abd.firebaseapp.com",
 	projectId: "fidas-99abd",
@@ -9,8 +11,6 @@ const firebaseConfig = {
 	appId: "1:1173540567:web:78baf195ae49f4d3f16a92"
   };
 
-if(!firebase.apps.length){
-    firebase.initializeApp(firebaseConfig);
-}
+firebase.initializeApp(firebaseConfig);
 
-export default firebase;
+export const db = firebase.firestore();
