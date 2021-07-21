@@ -6,8 +6,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { LinearGradient } from 'expo-linear-gradient';
-import firebase from 'firebase';
-import { firebaseConfig } from '../firebase/firebase';
+import { db, auth } from '../firebase/firebase';
 
 
 const SignInPage = () => {
@@ -20,8 +19,13 @@ const SignInPage = () => {
 			email: '',
 			password: '',
 		},
-		onSubmit: (values) => {
-			firebase.auth().signInWithEmailAndPassword(values.email, values.password)
+		onSubmit: async (values) => {
+			const user = await db.collection('users').doc(values.email).get();
+			if (!user.exists || !user.data().isFireStation){
+				alert('User is not registered as fire station')
+				return
+			}
+			auth.signInWithEmailAndPassword(values.email, values.password)
 			.then((userCredential) => {
 				// Signed in
 				return navigation.navigate('fireStationLogged')
@@ -74,7 +78,7 @@ const SignInPage = () => {
 				    error={!!errors.email}
 				    onChangeText={handleChange('email')}
 					// onChangeText={(theEmail) => setEmail(theEmail)}
-			   /> 
+			 /> 
 			   <Text style={styles.error}>{errors.email}</Text>
 
             <TextInput
@@ -101,11 +105,8 @@ const SignInPage = () => {
 					LOGIN
 				</Button>
 	
-		
 			</LinearGradient>
 		</View>
-
-		
 	);
 };
 
@@ -142,13 +143,11 @@ const styles = StyleSheet.create({
 		marginBottom: 40,
 		borderRadius: 500,
 	},
-
-	backIcon: {
+    backIcon: {
 		position: 'absolute',
 		top: 10,
 		left: 5,
 	},
-
 	input : {
 		borderWidth :1, 
 		width : 350,

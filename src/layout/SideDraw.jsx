@@ -3,7 +3,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { SafeAreaView,StyleSheet,Button ,TouchableOpacity, Text} from 'react-native';
 import LoggedPage from '../screens/logged';
 import About from '../Homepage/About';
-import TipsPage from '../Homepage/Tips';
+import TipsPage from '../Homepage/PrivacyAndPolicy';
 import TermsPage from '../Homepage/TermsAndConditions';
 import WebPage from '../Homepage/fireServiceWebsite';
 import Feedback from '../Homepage/Feedback';
