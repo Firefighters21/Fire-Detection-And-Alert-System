@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import { useNavigation } from '@react-navigation/core';
 import { View, Text, StyleSheet } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
@@ -7,13 +7,14 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { LinearGradient } from 'expo-linear-gradient';
 import firebase from 'firebase/app';
-import { firebaseConfig } from '../firebase/firebase';
-// import "firebase/auth";
+
+
 
 const LoginPage = () => {
 	const navigation = useNavigation();
+	const [isSecureEntry,setIsSecureEntry] = useState(true);
 	
-	const { values, errors, handleBlur, handleChange, handleSubmit } = useFormik({
+	const { values, errors,handleChange, handleSubmit } = useFormik({
 		initialValues: {
 			email: '',
 			password: '',
@@ -63,8 +64,13 @@ const LoginPage = () => {
 				<TextInput
 					style={styles.input}
 					label="Password"
-					secureTextEntry
-					right={<TextInput.Icon name="eye"  />}
+					secureTextEntry={isSecureEntry}
+					right={
+							<TextInput.Icon  name="eye" onPress ={()=>
+							setIsSecureEntry ((prev)=>!prev)
+							} 	
+						/>
+					}
 					type="outline"
 					left={<TextInput.Icon name="lock"  />}
 					value={values.password}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import { useNavigation } from '@react-navigation/core';
 import { View, Text, StyleSheet } from 'react-native';
 import { TextInput, IconButton  ,Menu,Button } from 'react-native-paper';
@@ -11,6 +11,7 @@ import firebase from 'firebase';
 
     const SignUpPage = () => {
 	const navigation = useNavigation();
+	const [isSecureEntry,setIsSecureEntry] = useState(true);
 	const [visible, setVisible] = React.useState(false);
 	const [firestation, setFireStation] = React.useState('Please select your firestation');
 	const openMenu = () => setVisible(true);
@@ -108,8 +109,13 @@ import firebase from 'firebase';
 
 			<TextInput
 				style={styles.input}
-				secureTextEntry
-				right={<TextInput.Icon name="eye" />}
+				secureTextEntry={isSecureEntry}
+					right={
+							<TextInput.Icon  name="eye" onPress ={()=>
+							setIsSecureEntry ((prev)=>!prev)
+							} 	
+						/>
+					}
 				label="Password"
 				type="outline"
 				value={values.password}

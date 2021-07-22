@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import { useNavigation } from '@react-navigation/core';
 import { View, Text, StyleSheet } from 'react-native';
 import { TextInput, IconButton , Button, Menu } from 'react-native-paper';
@@ -11,6 +11,7 @@ import { db, auth } from '../firebase/firebase';
 
 const SignInPage = () => {
 	const navigation = useNavigation();
+	const [isSecureEntry,setIsSecureEntry] = useState(true);
 	const openMenu = () => setVisible(true);
 	const closeMenu = () => setVisible(false);
 	const [visible, setVisible] = React.useState(false);
@@ -84,8 +85,13 @@ const SignInPage = () => {
             <TextInput
 			 style={styles.input} 
              label="Password"
-					secureTextEntry
-					right={<TextInput.Icon name="eye"  />}
+			 secureTextEntry={isSecureEntry}
+			 right={
+					 <TextInput.Icon  name="eye" onPress ={()=>
+					 setIsSecureEntry ((prev)=>!prev)
+					 } 	
+				 />
+			 }
 					type="outline"
 					left={<TextInput.Icon name="lock"  />}
 					value={values.password}

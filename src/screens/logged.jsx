@@ -1,26 +1,54 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/core';
-import { View , ImageBackground,StyleSheet,Text} from 'react-native';
+import { View , Platform, ImageBackground, StyleSheet,Text} from 'react-native';
 import fire  from  '../../assets/fire.png';
 import { StatusBar } from 'expo-status-bar';
-import { LinearGradient } from 'expo-linear-gradient';
-import alarm from '../../assets/alarm.png';
+import * as Location from 'expo-location';
+import Constants from 'expo-constants';
 import { Button } from 'react-native-paper';
 
 
-
-
-
-const LoggedPage = () => {
+const LoggedPage = () => { 
 	const navigation = useNavigation();
- 
-     
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+  
+  useEffect(() => {
+    (
+      async () => {
+      if (Platform.OS === 'android' && !Constants.isDevice) 
+      {
+        setErrorMsg(
+          'Oops, this will not work on Snack in an Android emulator. Try it on your device!'
+        );
+        return;
+      }
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied');
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+    })();
+  }, []);
+
+  let text = 'Waiting...';
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
+  }
+  
 
 	return (
         <View style={styles.container} >
+           <Text style={styles.paragraph}>{text}</Text>
         
          
             <ImageBackground source={fire} style={styles.image} >
+            <Text style={styles.paragraph}>{text}</Text>
               <Button
 		     	mode="contained"
 			    color ="white" 
@@ -30,7 +58,7 @@ const LoggedPage = () => {
 			>
 			 MANUAL BUZZER	
 			</Button>
-           </ImageBackground>
+          </ImageBackground> 
             <StatusBar style="fade" />
            
         </View>
@@ -44,6 +72,8 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       flexDirection: 'column',
+    
+      
     },
     logo :{
       marginTop: 20,
@@ -59,6 +89,10 @@ const styles = StyleSheet.create({
       width: 350,
       position: 'absolute',
     },
+    paragraph: {
+      fontSize: 18,
+      textAlign: 'center',
+    },
     image: {
       flex: 1,
       resizeMode: 'cover',
@@ -66,7 +100,6 @@ const styles = StyleSheet.create({
     }
     
   });
-
 
 
 export default LoggedPage;
