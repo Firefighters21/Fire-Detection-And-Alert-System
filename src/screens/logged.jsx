@@ -1,54 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React,{Component, useState} from 'react';
 import { useNavigation } from '@react-navigation/core';
-import { View , Platform, ImageBackground, StyleSheet,Text} from 'react-native';
+import { View , ImageBackground, StyleSheet,Text} from 'react-native';
 import fire  from  '../../assets/fire.png';
 import { StatusBar } from 'expo-status-bar';
+import * as Permissions from 'expo-permissions';
 import * as Location from 'expo-location';
-import Constants from 'expo-constants';
 import { Button } from 'react-native-paper';
+
 
 
 const LoggedPage = () => { 
 	const navigation = useNavigation();
-  const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
   
-  useEffect(() => {
-    (
-      async () => {
-      if (Platform.OS === 'android' && !Constants.isDevice) 
-      {
-        setErrorMsg(
-          'Oops, this will not work on Snack in an Android emulator. Try it on your device!'
-        );
-        return;
-      }
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
-      }
+  state = {
+    Location,
+    errorMessage : ''
+  };
+ 
 
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
-  }, []);
+  _getlocation = async() => {
+    const {status} = await Permissions.askAsync(Permissions.LOCATION);
 
-  let text = 'Waiting...';
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    text = JSON.stringify(location);
+    if(status !== 'granted'){
+      console.log('PERMISSION NOT GRANTED !');
+
+      this.setState({
+        errorMessage:'PERMISSION NOT GRANTED '
+      })
+    };
+    
+    const location =await location.getCurrentPositionAsync();
+
+    this.setState({
+      location,
+    });
   }
+ 
   
 
 	return (
         <View style={styles.container} >
-           <Text style={styles.paragraph}>{text}</Text>
-        
-         
+      
             <ImageBackground source={fire} style={styles.image} >
-            <Text style={styles.paragraph}>{text}</Text>
+           
               <Button
 		     	mode="contained"
 			    color ="white" 
@@ -86,13 +80,12 @@ const styles = StyleSheet.create({
     button: {
       marginTop: 60,
       padding: 5,
-      width: 350,
-      position: 'absolute',
+      width: 415,
+      alignContent:'center',
+      alignItems:'center',
+      position: 'relative',
     },
-    paragraph: {
-      fontSize: 18,
-      textAlign: 'center',
-    },
+  
     image: {
       flex: 1,
       resizeMode: 'cover',

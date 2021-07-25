@@ -6,7 +6,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { LinearGradient } from 'expo-linear-gradient';
-import {db} from '../firebase/firebase';
+import {db } from '../firebase/firebase';
 import firebase from 'firebase';
 
     const SignUpPage = () => {
