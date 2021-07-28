@@ -23,6 +23,7 @@ import firebase from 'firebase';
 			username:'',
 			phone:'',
 			password: '',
+			GPS: '',
 			
 		},
 		onSubmit: (values) => {
@@ -133,6 +134,15 @@ import firebase from 'firebase';
 				error={!!errors.phone}
 				left={<TextInput.Icon name="phone" />}
 				onChangeText={handleChange('phone')}
+			/>
+			<TextInput
+				style={styles.input}
+				label="GPS Address"
+				type="outline"
+				value={values.GPS}
+				error={!!errors.GPS}
+				left={<TextInput.Icon name="fire" />}
+				onChangeText={handleChange('GPS')}
 			/>
 			<Menu
           visible={visible}

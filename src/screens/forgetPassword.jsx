@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
 	},
 
     title: {
-		fontSize: 25,
+		fontSize: 20,
 		fontWeight: 'bold',
 		textTransform: 'uppercase',
 		textAlign: 'center',

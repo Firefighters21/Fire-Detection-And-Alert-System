@@ -11,6 +11,10 @@ export const firebaseConfig = {
 	appId: "1:1173540567:web:78baf195ae49f4d3f16a92"
   };
 
+  passwordReset: email => {
+	return firebase.auth().sendPasswordResetEmail(email)
+  },
+  
 firebase.initializeApp(firebaseConfig);
 
 export const db = firebase.firestore();
