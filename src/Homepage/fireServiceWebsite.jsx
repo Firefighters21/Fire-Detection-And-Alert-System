@@ -1,34 +1,31 @@
 import React from 'react';
-import { useNavigation } from '@react-navigation/core';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet, Linking } from 'react-native';
+import { Button } from 'react-native-paper';
 
 
 const WebPage = () => {
-	const navigation = useNavigation();
+
 	
 	return (
-		<View style={styles.root}>
-			<Text style={styles.text}>webpage</Text>
-			
-            
+        <View style={styles.container}>
+        <Button 
+		 onPress={ ()=>{ Linking.openURL('https://gnfs.gov.gh')}} 
+		 uppercase={false}
+		 mode="contained"
+		 >
+			 Click here to visit GNFS website
+		</Button>
+       </View>
+    );
+  }
 
-		</View>
-	);
-};
-
-const styles = StyleSheet.create({
-	root: {
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
-		backgroundColor: '#FF6300',
-	
-	},
-	text: {
-		fontSize: 22,
-		fontWeight: 'bold',
-		color: '#000',
-	},
-});
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#ecf0f1',
+    },
+  });
 
 export default WebPage;

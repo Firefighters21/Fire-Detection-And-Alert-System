@@ -11,7 +11,7 @@ import PrivacyAndPolicy from '../Homepage/PrivacyAndPolicy';
 import { useNavigation } from '@react-navigation/core';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
+import logout from '../Homepage/logout';
 
 const SideDraw = () => {
 	const Drawer = createDrawerNavigator();
@@ -23,19 +23,18 @@ const SideDraw = () => {
 
 
 		 <Drawer.Navigator >
-        <Drawer.Screen  name="logged" component={LoggedPage} />
-        <Drawer.Screen name="Tips and Tricks" component={TipsPage} />
-        <Drawer.Screen name="Fire Service Website" component={WebPage} />
-        <Drawer.Screen name="Terms and Conditions" component={TermsPage} />
-        <Drawer.Screen name="Privacy and Policy" component={PrivacyAndPolicy} />
-        <Drawer.Screen name="About" component={About} />
-        <Drawer.Screen name="Feedback" component={Feedback} />
+        <Drawer.Screen name="logged"   component={LoggedPage} />
+        <Drawer.Screen name="Tips and Tricks"  component={TipsPage} />
+        <Drawer.Screen name="Fire Service Website"   component={WebPage} />
+        <Drawer.Screen name="Terms and Conditions"   component={TermsPage} />
+        <Drawer.Screen name="Privacy and Policy"   component={PrivacyAndPolicy} />
+        <Drawer.Screen name="About"   component={About} />
+        <Drawer.Screen name="Feedback"  component={Feedback} />
+        <Drawer.Screen name="Log out"   component={logout} />
+        
       </Drawer.Navigator>
 
-       
-    
 
-      <Button title= "log out" onPress= {()=> navigation.navigate('login')} />
 
 </SafeAreaView>
 		

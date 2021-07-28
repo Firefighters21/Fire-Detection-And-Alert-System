@@ -20,9 +20,10 @@ import firebase from 'firebase';
 	const { values, errors, handleBlur, handleChange, handleSubmit } = useFormik({
 		initialValues: {
 			email: '',
-			password: '',
+			username:'',
 			phone:'',
-			username:''
+			password: '',
+			
 		},
 		onSubmit: (values) => {
 			//sign the user up and save his details to firebase
@@ -34,21 +35,25 @@ import firebase from 'firebase';
 			 })
 			
 			 //todo: save the user details to firebase
-			// db.collection("users").add({
-            //    email:values.email,username:values.username,phone:values.phone,firestation
-            // })
-            // .then((docRef) => {
-            //     console.log("Document written with ID: ", docRef.id);
-            // })
-            // .catch((error) => {
-            //     console.error("Error adding document: ", error);
-            // });
+			db.collection("users").add({
+               email:values.email,
+			   username:values.username,
+			   phone:values.phone,
+			   firestation
+            })
+            .then((docRef) => {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch((error) => {
+                console.error("Error adding document: ", error);
+            });
 			return navigation.navigate('logged')
 		})
 		.catch(error => {
 		  let errorMessage = '';
 		  var errorCode = error.code;
-		  if(errorCode === "auth/invalid-email") errorMessage = "Please enter your email. Try again"
+		  if(errorCode === "auth/invalid-email") 
+		  errorMessage = "Please enter your email. Try again"
 		  else errorMessage=error.message;
 		  alert(errorMessage)
 		  console.log('error --- ',{errorCode,errorMessage})	
@@ -60,10 +65,6 @@ import firebase from 'firebase';
 		}),
 	});
 
-	const onSignUp = () => {
-		
-	}
-	
 	return (
 		<View style={styles.root}>
 			<LinearGradient

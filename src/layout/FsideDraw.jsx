@@ -6,6 +6,7 @@ import Messages from '../FireStationHome/Messages';
 import Support from '../FireStationHome/Support';
 import About from '../FireStationHome/About';
 import { useNavigation } from '@react-navigation/core';
+import logout from '../FireStationHome/logout';
 
 
 const FsideDraw = () => {
@@ -21,10 +22,11 @@ const FsideDraw = () => {
          <Drawer.Screen  name="Messages" component={Messages} />
          <Drawer.Screen  name="Support" component={Support} />
          <Drawer.Screen  name="About" component={About} />
+         <Drawer.Screen name="log out" component={logout}/>
        
       </Drawer.Navigator>
 
-      <Button title= "log out" onPress={() => navigation.navigate('login')}/>
+      
      
 
 </SafeAreaView>

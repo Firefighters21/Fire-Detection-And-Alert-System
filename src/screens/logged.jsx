@@ -1,6 +1,6 @@
-import React,{Component, useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/core';
-import { View , ImageBackground, StyleSheet,Text} from 'react-native';
+import { View , ImageBackground, StyleSheet, Platform}  from 'react-native';
 import fire  from  '../../assets/fire.png';
 import { StatusBar } from 'expo-status-bar';
 import * as Permissions from 'expo-permissions';
@@ -8,36 +8,10 @@ import * as Location from 'expo-location';
 import { Button } from 'react-native-paper';
 
 
-
 const LoggedPage = () => { 
 	const navigation = useNavigation();
+
   
-  state = {
-    Location,
-    errorMessage : ''
-  };
- 
-
-  _getlocation = async() => {
-    const {status} = await Permissions.askAsync(Permissions.LOCATION);
-
-    if(status !== 'granted'){
-      console.log('PERMISSION NOT GRANTED !');
-
-      this.setState({
-        errorMessage:'PERMISSION NOT GRANTED '
-      })
-    };
-    
-    const location =await location.getCurrentPositionAsync();
-
-    this.setState({
-      location,
-    });
-  }
- 
-  
-
 	return (
         <View style={styles.container} >
       
@@ -59,10 +33,10 @@ const LoggedPage = () => {
 		
 		
 	);
-};
 
+  }
 
-const styles = StyleSheet.create({
+  const styles = StyleSheet.create({
     container: {
       flex: 1,
       flexDirection: 'column',
@@ -77,6 +51,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     transform: [{ scaleX: 2 }],
     },
+    
     button: {
       marginTop: 60,
       padding: 5,
@@ -95,4 +70,4 @@ const styles = StyleSheet.create({
   });
 
 
-export default LoggedPage;
+ export default LoggedPage;
