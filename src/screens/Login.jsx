@@ -53,6 +53,7 @@ const LoginPage = () => {
 				<TextInput
 					style={styles.input}
 					label="Email"
+					keyboardType='email-address'
 					type="outline"
 					left={<TextInput.Icon name="email" />}
 					value={values.email}

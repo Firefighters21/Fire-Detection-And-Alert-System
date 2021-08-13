@@ -102,6 +102,7 @@ import firebase from 'firebase';
 			<TextInput
 				style={styles.input}
 				label="Email"
+				keyboardType='email-address'
 				type="outline"
 				left={<TextInput.Icon name="email" />}
 				value={values.email}
@@ -129,6 +130,7 @@ import firebase from 'firebase';
 			<TextInput
 				style={styles.input}
 				label="Phone Number"
+				keyboardType='numeric'
 				type="outline"
 				value={values.phone}
 				error={!!errors.phone}

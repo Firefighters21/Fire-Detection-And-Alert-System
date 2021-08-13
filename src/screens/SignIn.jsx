@@ -74,6 +74,7 @@ const SignInPage = () => {
 			 style={styles.input} 
 			 label="Email"
 					type="outline"
+					keyboardType='email-address'
 					left={<TextInput.Icon name="email" />}
 					value={values.email}
 				    error={!!errors.email}
