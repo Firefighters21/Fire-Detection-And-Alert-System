@@ -29,7 +29,7 @@ const SignInPage = () => {
 			auth.signInWithEmailAndPassword(values.email, values.password)
 			.then((userCredential) => {
 				// Signed in
-				return navigation.navigate('Lists')
+				return navigation.navigate('Messages')
 			  })
 		.catch((error) => {
 		  let errorMessage = '';

@@ -13,6 +13,7 @@ function ListItem({
     username,
     userContact,
     userLocation,
+    date,
     time,
     onPress
 }) {
@@ -23,6 +24,7 @@ function ListItem({
            <AppText style={styles.username}>{username}</AppText>
            <AppText style={styles.userContact}>{userContact}</AppText>
            <AppText style={styles.userLocation}>{userLocation}</AppText>
+           <AppText style={styles.date}>{date}</AppText>
            <AppText style={styles.time}>{time}</AppText>
           
        </View>
@@ -34,8 +36,10 @@ const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: 'white',
         borderRadius: 20,
-        width:'100%',
-        marginBottom: 40 
+        marginBottom: 20,
+        marginTop:20,
+        marginLeft:20,
+        marginRight: 20, 
     },
 
     username:{

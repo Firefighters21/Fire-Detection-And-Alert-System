@@ -8,7 +8,7 @@ const Support = () => {
 	
 	return (
 		<View style={styles.root}>
-			<Text style={styles.text}>about</Text>
+			<Text style={styles.text}>Support</Text>
 			
          
 

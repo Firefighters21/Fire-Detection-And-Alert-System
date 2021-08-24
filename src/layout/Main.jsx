@@ -25,7 +25,7 @@ const MainLayout = () => {
 				initialRouteName="splash"
 			>
 				<Stack.Screen name="login" component={LoginPage}  />
-				<Stack.Screen name="Lists" component={FsideDraw}  options={{gestureEnabled : false}} />
+				<Stack.Screen name="Messages" component={FsideDraw}  options={{gestureEnabled : false}} />
 			
 				<Stack.Screen name="logged" component={SideDraw} options={{gestureEnabled : false}} />
 				<Stack.Screen name="SignUp" component={SignUpPage} />

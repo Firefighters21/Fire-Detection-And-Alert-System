@@ -2,7 +2,6 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Button, SafeAreaView, StyleSheet  } from 'react-native';
 import FireStationLogged from '../screens/FireStationLogged';
-import Messages from '../FireStationHome/Messages';
 import Support from '../FireStationHome/Support';
 import About from '../FireStationHome/About';
 import { useNavigation } from '@react-navigation/core';
@@ -19,8 +18,7 @@ const FsideDraw = () => {
 
 
 		 <Drawer.Navigator  >
-         <Drawer.Screen  name="Lists" component={ListingsDetailsScreen} />
-         <Drawer.Screen  name="Messages" component={Messages} />
+         <Drawer.Screen  name="Messages" component={ListingsDetailsScreen} />
          <Drawer.Screen  name="Support" component={Support} />
          <Drawer.Screen  name="About" component={About} />
          <Drawer.Screen name="log out" component={logout}/>
