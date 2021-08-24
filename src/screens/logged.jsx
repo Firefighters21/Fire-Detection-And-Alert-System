@@ -24,7 +24,7 @@ const LoggedPage = () => {
 	    		style={styles.button}
 		  	 onPress={() => navigation.navigate('')} 
 			>
-			 MANUAL BUZZER	
+			 BUZZER	
 			</Button>
           </ImageBackground> 
             <StatusBar style="fade" />
@@ -53,12 +53,14 @@ const LoggedPage = () => {
     },
     
     button: {
-      marginTop: 60,
-      padding: 5,
-      width: 415,
-      alignContent:'center',
+      width:'40%',  
+      borderRadius:20,
+     alignContent:'center',
       alignItems:'center',
       position: 'relative',
+      marginLeft:130
+  
+      
     },
   
     image: {
