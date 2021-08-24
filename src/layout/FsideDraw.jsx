@@ -7,6 +7,7 @@ import Support from '../FireStationHome/Support';
 import About from '../FireStationHome/About';
 import { useNavigation } from '@react-navigation/core';
 import logout from '../FireStationHome/logout';
+import ListingsDetailsScreen from '../screens/ListingsDetailsScreen';
 
 
 const FsideDraw = () => {
@@ -18,7 +19,7 @@ const FsideDraw = () => {
 
 
 		 <Drawer.Navigator  >
-         <Drawer.Screen  name="fireStationLogged" component={FireStationLogged} />
+         <Drawer.Screen  name="Lists" component={ListingsDetailsScreen} />
          <Drawer.Screen  name="Messages" component={Messages} />
          <Drawer.Screen  name="Support" component={Support} />
          <Drawer.Screen  name="About" component={About} />
