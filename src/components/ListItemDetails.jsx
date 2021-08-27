@@ -7,27 +7,33 @@ import {
      } from 'react-native';
 
      import AppText from '../components/AppText';
+     import Swipeable from "react-native-gesture-handler/Swipeable";
   
 
 function ListItem({
     username,
     userContact,
     userLocation,
-    date,
-    time,
+    dateSent,
+    timeSent,
+    renderRightActions,
     onPress
 }) {
     return (
-    
+        <Swipeable  renderRightActions={renderRightActions}>
+
        <View style={styles.container}>
-           
            <AppText style={styles.username}>{username}</AppText>
            <AppText style={styles.userContact}>{userContact}</AppText>
            <AppText style={styles.userLocation}>{userLocation}</AppText>
-           <AppText style={styles.date}>{date}</AppText>
-           <AppText style={styles.time}>{time}</AppText>
+           <AppText style={styles.dateSent}>{dateSent}</AppText>
+           <AppText style={styles.timeSent}>{timeSent}</AppText>
           
        </View>
+         
+        </Swipeable>
+        
+        
       
     );
 }

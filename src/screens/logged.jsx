@@ -3,15 +3,41 @@ import { useNavigation } from '@react-navigation/core';
 import { View , ImageBackground, StyleSheet, Platform}  from 'react-native';
 import fire  from  '../../assets/fire.png';
 import { StatusBar } from 'expo-status-bar';
-import * as Permissions from 'expo-permissions';
 import * as Location from 'expo-location';
 import { Button } from 'react-native-paper';
+import firebase from "firebase";
 
 
 const LoggedPage = () => { 
-	const navigation = useNavigation();
+  const [location, setLocation] = useState();
 
-  
+  const getLocation = async () => {
+    try {
+      const { granted } = await Location.requestPermissionsAsync();
+      if (!granted) return;
+      const {
+        coords: { latitude, longitude },
+      } = await Location.getCurrentPositionAsync();
+      setLocation({ latitude, longitude });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getLocation();
+  }, []);
+
+
+ const handleBuzzerPress = () => {
+   const data = {
+     userName:userAuth.displayName,
+     userContact:userAuth.phoneNumber,
+     dateSent:new Date().toLocaleDateString(),
+     timeSent: new Date().toLocaleTimeString([], { hour: '2-digit', minute: "2-digit", hour12: false }),
+     location:""
+   }
+ }
 	return (
         <View style={styles.container} >
       
@@ -22,7 +48,8 @@ const LoggedPage = () => {
 			    color ="white" 
 		    	uppercase ={false}
 	    		style={styles.button}
-		  	 onPress={() => navigation.navigate('')} 
+		  	 onPress={() =>handleBuzzerPress()} 
+        
 			>
 			 BUZZER	
 			</Button>
